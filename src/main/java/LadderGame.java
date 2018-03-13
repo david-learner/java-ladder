@@ -5,7 +5,7 @@ public class LadderGame {
 
     public LadderGame(int peopleCount, int height) {
         int width = peopleCount + (peopleCount - 1);
-        this.ladderLine = new LadderLine[width];
+        this.ladderLine = new LadderLine[height];
         getLines(width, height);
     }
 
