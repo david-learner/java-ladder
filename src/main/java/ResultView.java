@@ -18,17 +18,21 @@ public class ResultView {
             System.out.printf(name + " ");
         }
     }
+
     static void printLine(LadderLine line) {
         ArrayList<Boolean> points;
         points = line.getLine();
         for (int i = 0; i < points.size(); i++) {
-            if ( i%2 == 1 ) {
-                printBridge(points.get(i));
-            }
+            printElements(points, i);
+        }
+    }
 
-            if ( i%2 == 0 ) {
-                printPipe();
-            }
+    private static void printElements(ArrayList<Boolean> points, int i) {
+        if (i % 2 == 1) {
+            printBridge(points.get(i));
+        }
+        if (i % 2 == 0) {
+            printPipe();
         }
     }
 
@@ -38,9 +42,9 @@ public class ResultView {
 
     static void printBridge(Boolean bridge) {
         if (bridge) {
-            System.out.print("-");
+            System.out.print("-----");
             return;
         }
-        System.out.print(" ");
+        System.out.print("     ");
     }
 }
