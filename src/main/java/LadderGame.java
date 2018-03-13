@@ -1,20 +1,21 @@
 public class LadderGame {
-    private String[] ladderLines;
-    private LadderLine ladderLine;
+    private LadderLine[] ladderLine;
+    // width, height 인스턴스 변수를 만들어야 할까?
+    // 만약 LadderGame 코드 중에서 width, height를 쓸 일이 많이 늘면 고려하기.
 
     public LadderGame(int peopleCount, int height) {
-        ladderLines = new String[height];
-        ladderLine = new LadderLine(peopleCount);
-        getLines(height);
+        int width = peopleCount + (peopleCount - 1);
+        this.ladderLine = new LadderLine[width];
+        getLines(width, height);
     }
 
-    public void getLines(int height) {
+    public void getLines(int width, int height) {
         for (int i = 0; i < height; i++) {
-            this.ladderLines[i] = ladderLine.getLine();
+            this.ladderLine[i] = new LadderLine(width);
         }
     }
 
-    public String[] getLadderLines() {
-        return this.ladderLines;
+    public LadderLine[] getLadderLine() {
+        return this.ladderLine;
     }
 }

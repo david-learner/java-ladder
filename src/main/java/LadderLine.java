@@ -1,13 +1,20 @@
 import java.util.Random;
 
 public class LadderLine {
-    private int width;
+    private String line;
+    // 1. LadderLine 클래스는 ladderLine에 대한 정보를 가지고 있어야 한다.
+    // 기존에는 LadderLine으로부터 line을 메서드 반환값으로 얻어오는 형태였다.
+    // 2. width도 가지고 있을 필요가 없다. 오직 line에 대한 정보만 가지고 있으면 된다.
 
-    LadderLine(int peopleCount) {
-        this.width = peopleCount + (peopleCount - 1);
+    LadderLine(int width) {
+        this.line = this.getLine(width);
     }
 
     public String getLine() {
+        return this.line;
+    }
+
+    private String getLine(int width) {
         StringBuilder line = new StringBuilder();
         String prevBridge = " ";
         int printCount = (width - 1) / 2;
