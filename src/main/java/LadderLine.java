@@ -1,25 +1,10 @@
 import java.util.Random;
 
-public class LadderBase {
-    private String[] ladderLines;
-    private int height;
+public class LadderLine {
     private int width;
 
-    LadderBase(int peopleCount, int height) {
+    LadderLine(int peopleCount) {
         this.width = peopleCount + (peopleCount - 1);
-        this.height = height;
-        ladderLines = new String[height];
-        drawLadder();
-    }
-
-    public String[] getLadderLines() {
-        return this.ladderLines;
-    }
-
-    public void drawLadder() {
-        for (int i = 0; i < height; i++) {
-            ladderLines[i] = getLine();
-        }
     }
 
     public String getLine() {
