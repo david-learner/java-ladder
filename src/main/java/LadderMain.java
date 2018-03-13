@@ -3,8 +3,9 @@ public class LadderMain {
         int peopleCount = InputView.getPeopleCount();
         int height = InputView.getHeight();
 
-        LadderGame ladderGame = new LadderGame(peopleCount, height);
-        ladderGame.drawLadderLine();
-        ResultView.printResult(ladderGame);
+        // LadderGame ladderGame = new LadderGame(peopleCount, height);
+        // ladderGame.drawLadderLine();
+        LadderBase ladderBase = new LadderBase(peopleCount, height);
+        ResultView.printResult(ladderBase);
     }
 }
