@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class ResultView {
     static void printResult(LadderGame ladderGame) {
         char[][] ladderBase = ladderGame.getLadderBase();

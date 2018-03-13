@@ -4,18 +4,18 @@ public class LadderGame {
     private char[][] ladderBase;
 
     public LadderGame(int peopleCount, int height) {
-        // peopleCount가 2이상일 때
-        this.ladderBase = new char[peopleCount + 2][height];
+        int row = height;
+        int column = peopleCount + (peopleCount - 1);
+        this.ladderBase = new char[row][column];
     }
 
-    public void inputLadderLine() {
+    public void drawLadderLine() {
         int columnCount = getColumns();
         for (int i = 1; i < columnCount; i += 2) {
-            // System.out.println(i);
             inputDash(i);
         }
 
-        for (int i = 0; i < columnCount; i += 2) {
+        for (int i = 0; i <= columnCount; i += 2) {
             inputPipe(i);
         }
     }
@@ -38,19 +38,15 @@ public class LadderGame {
         }
     }
 
-    public boolean isOverlap(int rowIndex, int colIndex) {
-        if( colIndex >= 3 && ladderBase[rowIndex][colIndex-2] != '-') {
-            return false;
+    public boolean isOverlap(int row, int col) {
+        if (!(col == 1) && ladderBase[row][col - 2] == '-') {
+            return true;
         }
-
-        if( colIndex == 1 ) {
-            return false;
-        }
-        return true;
+        return false;
     }
 
-    public char getDash(int rowIndex, int colIndex) {
-        if ( !isOverlap(rowIndex, colIndex) && getRandomNo() == 1) {
+    public char getDash(int row, int col) {
+        if (!isOverlap(row, col) && getRandomNo() == 1) {
             return '-';
         }
         return ' ';
