@@ -16,12 +16,13 @@ public class LadderLine {
 
     private String getLine(int width) {
         StringBuilder line = new StringBuilder();
-        String prevBridge = " ";
+        String prevBridge = "     ";
         int printCount = (width - 1) / 2;
 
         line.append(addPipe());
         for (int i = 0; i < printCount; i++) {
             // prevBridge 말고 더 이해가 잘 되는 이름 없나?
+            // subString()으로 첫 번째 문자를 prevBridge로.
             prevBridge = addBridge(prevBridge);
             line.append(prevBridge);
             line.append(addPipe());
@@ -34,11 +35,12 @@ public class LadderLine {
         return "|";
     }
 
+    // TODO "-----" or "     " 판단하는 방법 리팩토링
     public String addBridge(String prevBridge) {
-        if ((makeRandomValue() == 1) && prevBridge == " ") {
-            return "-";
+        if ((makeRandomValue() == 1) && prevBridge == "     ") {
+            return "-----";
         }
-        return " ";
+        return "     ";
     }
 
     public int makeRandomValue() {
