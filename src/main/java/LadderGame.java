@@ -6,11 +6,10 @@ public class LadderGame {
 
     public LadderGame(String[] namesOfPersons, int height) {
         int countOfPersons = namesOfPersons.length;
-        int width = countOfPersons + (countOfPersons - 1);
 
         this.ladderLine = new LadderLine[height];
         this.namesOfPersons = namesOfPersons;
-        getLines(width, height);
+        getLines(countOfPersons, height);
     }
 
     public String[] getNamesOfPersons() {
