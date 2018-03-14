@@ -10,6 +10,7 @@ public class LadderLine {
     // 4. pipe도 UI로직이다. 굳이 LadderLine이 들고 있지 않아도 출력할 때 뿌려주면 된다.
     // 즉, 진짜 필요한 최소한의 데이터만 들고 있는 것.
 
+    // LadderLine은 가로로 한 줄을 의미한다.
     LadderLine(int countOfPersons) {
         this.getLine(countOfPersons);
     }

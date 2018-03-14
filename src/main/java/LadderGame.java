@@ -16,9 +16,9 @@ public class LadderGame {
         return this.namesOfPersons;
     }
 
-    public void getLines(int width, int height) {
+    public void getLines(int countOfPersons, int height) {
         for (int i = 0; i < height; i++) {
-            this.ladderLine[i] = new LadderLine(width);
+            this.ladderLine[i] = new LadderLine(countOfPersons);
         }
     }
 
