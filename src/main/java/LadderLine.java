@@ -23,13 +23,14 @@ public class LadderLine {
         Boolean prevBridge = false;
 
         for (int i = 0; i < countOfPersons; i++) {
-            prevBridge = addBridge(prevBridge);
+            int randomValue = makeRandomValue();
+            prevBridge = addBridge(randomValue, prevBridge);
             points.add(prevBridge);
         }
     }
 
-    public Boolean addBridge(Boolean prevBridge) {
-        if ((makeRandomValue() == 1) && (prevBridge == false)) {
+    public Boolean addBridge(int randomValue, Boolean prevBridge) {
+        if ((randomValue == 1) && (prevBridge == false)) {
             return true;
         }
         return false;
