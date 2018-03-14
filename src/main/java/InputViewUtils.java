@@ -9,7 +9,7 @@ public class InputViewUtils {
     }
 
     static String checkValidation(String name) {
-        if(name.length() <= 5) {
+        if(isValid(name)) {
             return name;
         }
         return convert(name);
@@ -17,5 +17,12 @@ public class InputViewUtils {
 
     static String convert(String name) {
         return name.substring(0, 5);  // endIndex번째는 포함되지 않는다.
+    }
+
+    static Boolean isValid(String name) {
+        if(name.length()<=5) {
+            return true;
+        }
+        return false;
     }
 }
