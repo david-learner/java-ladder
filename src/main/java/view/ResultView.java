@@ -2,6 +2,7 @@ package view;
 
 import domain.LadderGame;
 import domain.LadderLine;
+import domain.Player;
 
 import java.util.ArrayList;
 
@@ -20,10 +21,18 @@ public class ResultView {
     }
 
     static void printNames(LadderGame ladderGame) {
-        for (String name : ladderGame.getNamesOfPersons()) {
+        Player[] players = ladderGame.getPlayers();
+
+        for (int i = 0; i < players.length; i++) {
+            String name = players[i].getName();
             System.out.print(String.format("%-6s", name));
         }
         System.out.println();
+
+//        for (String name : ladderGame.getNamesOfPersons()) {
+//            System.out.print(String.format("%-6s", name));
+//        }
+//        System.out.println();
     }
 
     static void printLine(LadderLine line) {

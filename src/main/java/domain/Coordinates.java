@@ -4,11 +4,11 @@ public class Coordinates {
     private int row;
     private int column;
 
-    public moveRow() {
+    public void moveRow() {
 
     }
 
-    public moveColumn() {
+    public void moveColumn() {
 
     }
 }
