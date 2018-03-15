@@ -1,3 +1,5 @@
+package view;
+
 public class InputViewUtils {
     static String[] checkNames(String[] namesOfPersons) {
         for (int i = 0; i < namesOfPersons.length; i++) {

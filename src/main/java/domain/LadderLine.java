@@ -1,9 +1,11 @@
+package domain;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class LadderLine {
     private ArrayList<Boolean> points = new ArrayList<>();
-    // 1. LadderLine 클래스는 ladderLine에 대한 정보를 가지고 있어야 한다.
+    // 1. domain.LadderLine 클래스는 ladderLine에 대한 정보를 가지고 있어야 한다.
     // 기존에는 LadderLine으로부터 line을 메서드 반환값으로 얻어오는 형태였다.
     // 2. width도 가지고 있을 필요가 없다. 오직 line에 대한 정보만 가지고 있으면 된다.
     // 3. UI로직이 포함되어 있는지 아닌지 확인하자. ( 특히 sysout들 )
@@ -23,13 +25,14 @@ public class LadderLine {
         Boolean prevBridge = false;
 
         for (int i = 0; i < countOfPersons; i++) {
-            prevBridge = addBridge(prevBridge);
+            int randomValue = makeRandomValue();
+            prevBridge = addBridge(randomValue, prevBridge);
             points.add(prevBridge);
         }
     }
 
-    public Boolean addBridge(Boolean prevBridge) {
-        if ((makeRandomValue() == 1) && (prevBridge == false)) {
+    public Boolean addBridge(int randomValue, Boolean prevBridge) {
+        if ((randomValue == 1) && (prevBridge == false)) {
             return true;
         }
         return false;

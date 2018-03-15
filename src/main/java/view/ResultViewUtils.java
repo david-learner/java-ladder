@@ -1,22 +1,20 @@
+package view;
+
+import domain.LadderGame;
+import domain.LadderLine;
+
 import java.util.ArrayList;
 
-public class ResultView {
-    static void printResult(LadderGame ladderGame) {
-        LadderLine[] ladderLine = ladderGame.getLadderLine();
-
-        printNames(ladderGame);
-        System.out.println();
-
-        for (LadderLine line : ladderLine) {
-            printLine(line);
-            System.out.println();
-        }
-    }
+class ResultViewUtils {
+    private static final String dashLine = "-----";
+    private static final String spaceLine = "     ";
+    private static final String pipe = "|";
 
     static void printNames(LadderGame ladderGame) {
         for (String name : ladderGame.getNamesOfPersons()) {
-            System.out.printf(name + " ");
+            System.out.print(String.format("%-6s", name));
         }
+        System.out.println();
     }
 
     static void printLine(LadderLine line) {
@@ -25,9 +23,9 @@ public class ResultView {
         int width = points.size() + (points.size() - 1);
 
         for (int i = 0; i < width; i++) {
-//            System.out.print(i);
             printElements(points, i);
         }
+        System.out.println();
     }
 
     private static void printElements(ArrayList<Boolean> points, int i) {
@@ -40,15 +38,15 @@ public class ResultView {
         }
     }
 
-    static void printPipe() {
-        System.out.print("|");
+    private static void printPipe() {
+        System.out.print(pipe);
     }
 
-    static void printBridge(Boolean bridge) {
+    private static void printBridge(Boolean bridge) {
         if (bridge) {
-            System.out.print("-----");
+            System.out.print(dashLine);
             return;
         }
-        System.out.print("     ");
+        System.out.print(spaceLine);
     }
 }

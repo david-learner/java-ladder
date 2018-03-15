@@ -1,3 +1,9 @@
+package domain;
+
+import domain.LadderGame;
+import view.InputView;
+import view.ResultView;
+
 public class LadderMain {
     public static void main(String[] args) {
         String[] namesOfPersons = InputView.getNamesOfPersons();
