@@ -1,6 +1,5 @@
 package domain;
 
-import domain.LadderGame;
 import view.InputView;
 import view.ResultView;
 

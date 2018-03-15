@@ -1,9 +1,7 @@
 package domain;
 
-import domain.LadderLine;
 import org.junit.Before;
 import org.junit.Test;
-import view.InputViewUtils;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
