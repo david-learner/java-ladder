@@ -3,6 +3,7 @@ package domain;
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
@@ -28,5 +29,11 @@ public class LadderLineTest {
 
         // 랜덤 값은 1이라서 생성 최소 조건은 만족하지만, 이전 브릿지가 존재하므로 생성 불가.
         assertFalse(line.addBridge(randomValue, prevBridge));
+    }
+
+    @Test
+    public void getLineColumns() {
+        // setup()에서 사람 수로 3명을 전달하고 있다. 브릿지 수 = 사람 수 - 1
+        assertEquals(2, line.getLine().size());
     }
 }

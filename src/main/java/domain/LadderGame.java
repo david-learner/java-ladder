@@ -3,8 +3,6 @@ package domain;
 public class LadderGame {
     private LadderLine[] ladderLine;
     private String[] namesOfPersons;
-    // width, height 인스턴스 변수를 만들어야 할까?
-    // 만약 domain.LadderGame 코드 중에서 width, height를 쓸 일이 많이 늘면 고려하기.
 
     LadderGame(String[] namesOfPersons, int height) {
         int countOfPersons = namesOfPersons.length;

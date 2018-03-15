@@ -8,13 +8,13 @@ import static junit.framework.TestCase.assertTrue;
 public class InputViewTest {
     @Test
     public void checkValidationPass() {
-        String validName = "ABCDE"; // length:5
-        assertTrue(InputViewUtils.isValid(validName));
+        String validName = "ABCDE";
+        assertTrue(InputView.isValid(validName));
     }
 
     @Test
     public void checkValidationFail() {
-        String invalidName = "ABCDEF"; // length:6
-        assertFalse(InputViewUtils.isValid(invalidName));
+        String invalidName = "ABCDEF";
+        assertFalse(InputView.isValid(invalidName));
     }
 }
