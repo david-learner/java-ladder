@@ -26,7 +26,7 @@ public class ResultView {
 
     private static void printRewards(LadderGameDTO dto) {
         String[] rewards = dto.getRewards();
-        for (String reward: rewards) {
+        for (String reward : rewards) {
             System.out.print(String.format("%-5s", reward));
         }
         System.out.println("\n");

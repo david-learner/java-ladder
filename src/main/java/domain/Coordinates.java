@@ -23,10 +23,10 @@ public class Coordinates {
     }
 
     public void moveColumn(int playerColumn, int bridgeColumn) {
-        if(playerColumn == bridgeColumn) {
+        if (playerColumn == bridgeColumn) {
             moveRight();
         }
-        if(playerColumn > 0 && playerColumn > bridgeColumn) {
+        if (playerColumn > 0 && playerColumn > bridgeColumn) {
             moveLeft();
         }
     }

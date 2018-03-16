@@ -17,7 +17,7 @@ public class LadderLine {
 
     private void getLine(int countOfPersons) {
         Boolean prevBridge = false;
-        for (int i = 0; i < countOfPersons-1; i++) {
+        for (int i = 0; i < countOfPersons - 1; i++) {
             int randomValue = makeRandomValue();
             prevBridge = addBridge(randomValue, prevBridge);
             points.add(prevBridge);

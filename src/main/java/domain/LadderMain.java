@@ -19,7 +19,7 @@ public class LadderMain {
 
     private static void inputOutputTarget(LadderGameDTO dto) {
         String target = "";
-        while(!target.equals("all")) {
+        while (!target.equals("all")) {
             target = InputView.getTarget();
             ResultView.printTarget(target, dto);
         }

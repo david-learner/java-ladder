@@ -41,12 +41,9 @@ public class LadderMatch {
         point = player.getPoint();
 
         for (int i = 0; i < lineWidth; i++) {
-            // Todo 2depth Warning
             if (checkRow(point.getRow(), index)) {
-//                System.out.println("전 : " + point.getRow() + " " + point.getColumn());
                 moveColumn(point.getColumn(), i);
                 point.moveRow();
-//                System.out.println("후 : " + point.getRow() + " " + point.getColumn());
             }
         }
 
@@ -54,7 +51,6 @@ public class LadderMatch {
 
     // 현재 라인의 위치와 플레이어의 row위치가 일치해야 탐색을 할 수 있다.
     Boolean checkRow(int playerRow, int index) {
-//        System.out.println("p.row " + playerRow + " l.row" + index);
         if (playerRow == index) {
             return true;
         }
