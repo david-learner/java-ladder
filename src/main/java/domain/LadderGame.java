@@ -6,10 +6,10 @@ public class LadderGame {
 
     LadderGame(String[] namesOfPersons, int height) {
         int countOfPersons = namesOfPersons.length;
-
         this.ladderLine = new LadderLine[height];
         makePlayers(namesOfPersons);
         getLines(countOfPersons, height);
+        startMatch(this.players, this.ladderLine);
     }
 
     public Player[] getPlayers() {
@@ -32,5 +32,9 @@ public class LadderGame {
 
     public LadderLine[] getLadderLine() {
         return this.ladderLine;
+    }
+
+    private void startMatch(Player[] players, LadderLine[] ladderLines) {
+        LadderMatch ladderMatch = new LadderMatch(players, ladderLines);
     }
 }

@@ -26,7 +26,7 @@ public class Coordinates {
         if(playerColumn == bridgeColumn) {
             moveRight();
         }
-        if(bridgeColumn > 0 && playerColumn > bridgeColumn) {
+        if(playerColumn > 0 && playerColumn > bridgeColumn) {
             moveLeft();
         }
     }

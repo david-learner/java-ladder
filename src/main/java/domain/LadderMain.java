@@ -14,14 +14,10 @@ public class LadderMain {
         int height = InputView.getHeight();
 
         LadderGame ladderGame = new LadderGame(namesOfPersons, height);
-        LadderMatch ladderMatch = new LadderMatch(ladderGame.getPlayers(), ladderGame);
-        for (Player player : ladderGame.getPlayers()) {
-            // System.out.println(player.getPoint().getColumn());
-            // get.get 해결방안 포비 강의 참고
-        }
-
-
-
+//        for (Player player : ladderGame.getPlayers()) {
+//            Coordinates point = player.getPoint();
+//            System.out.println("p name : " + player.getName() + " " + point.getRow() + " "+ point.getColumn());
+//        }
         ResultView.printResult(ladderGame);
     }
 }

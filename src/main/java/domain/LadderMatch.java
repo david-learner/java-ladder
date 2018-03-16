@@ -6,37 +6,70 @@ public class LadderMatch {
     Player[] players;
     LadderLine[] ladderLines;
     ArrayList<Boolean> points;
+    Coordinates point;
 
-    LadderMatch(Player[] players, LadderGame ladderGame) {
-        this.ladderLines = ladderGame.getLadderLine();
+    LadderMatch(Player[] players, LadderLine[] ladderLines) {
         this.players = players;
-        findPath();
+        this.ladderLines = ladderLines;
+        startMatch();
     }
 
-    private void findPath() {
+    void startMatch() {
         for (int i = 0; i < this.players.length; i++) {
-            navigate(players[i]);
+            Player player = players[i];
+            scanRow(player);
         }
     }
 
-    private void navigate(Player player) {
-        // Todo Coordinates로 ladderLine의 point도 통합할 방법 찾기
-        Coordinates playerPoint = player.getPoint();
-        for (int i = 0; i < ladderLines.length; i++) {
-            int currentLineNumber = i;
-            points = ladderLines[i].getLine();
+    void scanRow(Player player) {
+        int rows = ladderLines.length;
+        for (int i = 0; i < rows; i++) {
+            // checkRow(player, i);
+            setPoints(ladderLines[i]);
+            scanColumn(player, i);
+        }
+    }
 
-            System.out.println("시작지점 : " + playerPoint.getRow() + ", " + playerPoint.getColumn());
-            if(playerPoint.getRow() == currentLineNumber) {
-                System.out.println("현재 라인 : " + currentLineNumber);
-                for (int j = 0; j < points.size(); j++) {
-                    if(points.get(j)) {
-                        playerPoint.moveColumn(playerPoint.getColumn(), j);
-                    }
-                    playerPoint.moveRow();
-                    System.out.println("이동 : " + playerPoint.getRow() + ", " + playerPoint.getColumn());
-                }
+    private void setPoints(LadderLine ladderLine) {
+        this.points = ladderLine.getLine();
+    }
+
+    // 라인의 칸(한 줄)을 탐색한다.
+    void scanColumn(Player player, int index) {
+
+        int lineWidth = players.length - 1;
+        point = player.getPoint();
+
+        for (int i = 0; i < lineWidth; i++) {
+            // Todo 2depth Warning
+            if (checkRow(point.getRow(), index)) {
+//                System.out.println("전 : " + point.getRow() + " " + point.getColumn());
+                moveColumn(point.getColumn(), i);
+                point.moveRow();
+//                System.out.println("후 : " + point.getRow() + " " + point.getColumn());
             }
         }
+
+    }
+
+    // 현재 라인의 위치와 플레이어의 row위치가 일치해야 탐색을 할 수 있다.
+    Boolean checkRow(int playerRow, int index) {
+//        System.out.println("p.row " + playerRow + " l.row" + index);
+        if (playerRow == index) {
+            return true;
+        }
+        return false;
+    }
+
+    private void moveColumn(int playerColumn, int lineColumn) {
+        // 라인의 칸 안에 값이 True. 즉, bridge가 있으면 이동한다.
+        if (isValidColumnValue(lineColumn)) {
+            point.moveColumn(playerColumn, lineColumn);
+        }
+    }
+
+    // line의 칸 안에 들어있는 T/F 값을 확인한다.
+    private Boolean isValidColumnValue(int lineColumn) {
+        return points.get(lineColumn);
     }
 }
