@@ -22,7 +22,6 @@ public class LadderLine {
             prevBridge = addBridge(randomValue, prevBridge);
             points.add(prevBridge);
         }
-        System.out.println(points.toString());
     }
 
     public Boolean addBridge(int randomValue, Boolean prevBridge) {

@@ -18,8 +18,12 @@ public class Player {
         return this.name;
     }
 
-    public void getMyReward(String[] reward) {
+    public String getReward() {
+        return this.reward;
+    }
+
+    public void receiveMyReward(String[] rewards) {
         int rewardNo = this.point.getColumn();
-        this.reward = reward[rewardNo];
+        this.reward = rewards[rewardNo];
     }
 }

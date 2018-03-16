@@ -22,6 +22,11 @@ public class InputView {
         return scanner.nextInt();
     }
 
+    public static String getTarget() {
+        System.out.println("결과를 보고 싶은 사람은?");
+        return scanner.next();
+    }
+
     private static String[] checkNames(String[] namesOfPersons) {
         for (int i = 0; i < namesOfPersons.length; i++) {
             String name = namesOfPersons[i];

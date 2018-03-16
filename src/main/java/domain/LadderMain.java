@@ -8,16 +8,20 @@ import java.util.Arrays;
 public class LadderMain {
     public static void main(String[] args) {
         LadderGameDTO dto = new LadderGameDTO();
-
-        String[] namesOfPersons = InputView.getNamesOfPersons();
+        dto.setNamesOfPersons(InputView.getNamesOfPersons());
         dto.setRewards(InputView.getRewardsOfPersons());
-        int height = InputView.getHeight();
+        dto.setHeight(InputView.getHeight());
+        LadderGame ladderGame = new LadderGame(dto);
+        ResultView.printResult(ladderGame, dto);
+        inputOutputTarget(dto);
+        ResultView.printAllRewards(dto);
+    }
 
-        LadderGame ladderGame = new LadderGame(namesOfPersons, height);
-//        for (Player player : ladderGame.getPlayers()) {
-//            Coordinates point = player.getPoint();
-//            System.out.println("p name : " + player.getName() + " " + point.getRow() + " "+ point.getColumn());
-//        }
-        ResultView.printResult(ladderGame);
+    private static void inputOutputTarget(LadderGameDTO dto) {
+        String target = "";
+        while(!target.equals("all")) {
+            target = InputView.getTarget();
+            ResultView.printTarget(target, dto);
+        }
     }
 }

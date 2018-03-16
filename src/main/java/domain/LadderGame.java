@@ -4,12 +4,14 @@ public class LadderGame {
     private LadderLine[] ladderLine;
     private Player[] players;
 
-    LadderGame(String[] namesOfPersons, int height) {
-        int countOfPersons = namesOfPersons.length;
-        this.ladderLine = new LadderLine[height];
-        makePlayers(namesOfPersons);
-        getLines(countOfPersons, height);
+    LadderGame(LadderGameDTO dto) {
+        int countOfPersons = dto.getNamesOfPersons().length;
+        this.ladderLine = new LadderLine[dto.getHeight()];
+        makePlayers(dto.getNamesOfPersons());
+        dto.setPlayers(this.getPlayers());
+        getLines(countOfPersons, dto.getHeight());
         startMatch(this.players, this.ladderLine);
+        giveRewards(dto.getRewards());
     }
 
     public Player[] getPlayers() {
@@ -36,5 +38,12 @@ public class LadderGame {
 
     private void startMatch(Player[] players, LadderLine[] ladderLines) {
         LadderMatch ladderMatch = new LadderMatch(players, ladderLines);
+    }
+
+    private void giveRewards(String[] rewards) {
+        for (int i = 0; i < this.players.length; i++) {
+            Player player = this.players[i];
+            player.receiveMyReward(rewards);
+        }
     }
 }
