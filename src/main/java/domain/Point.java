@@ -9,6 +9,10 @@ public class Point {
         this.direction = direction;
     }
 
+    public Direction getDirection() {
+        return direction;
+    }
+
     public int move() {
         System.out.println("is left? " + direction.isLeft());
         System.out.println("is Right? " + direction.isRight());

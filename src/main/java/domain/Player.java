@@ -3,12 +3,6 @@ package domain;
 public class Player {
     private String name;
     private Location location;
-    private String reward;
-
-//    public Player(String name) {
-//        Location location = new Location(0,0);
-//        this(name, location)
-//    }
 
     public Player(String name, Location location) {
         this.name = name;
@@ -26,14 +20,5 @@ public class Player {
 
     public String getName() {
         return this.name;
-    }
-
-    public String getReward() {
-        return this.reward;
-    }
-
-    public void receiveMyReward(String[] rewards) {
-        int rewardNo = this.point.getColumn();
-        this.reward = rewards[rewardNo];
     }
 }

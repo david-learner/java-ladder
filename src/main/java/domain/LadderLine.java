@@ -1,5 +1,6 @@
 package domain;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,6 @@ public class LadderLine {
 
     public LadderLine(List<Point> points) {
         this.points = points;
-
     }
 
     // 생성자내에 초기화 로직을 쓰면 의미전달이 명확하지 않게 된다.
@@ -23,6 +23,10 @@ public class LadderLine {
         return new LadderLine(points);
     }
 
+    public List<Point> getPoints() {
+        return this.points;
+    }
+
     private static void initLast(List<Point> points, Point point) {
         point = point.last();
         points.add(point);
@@ -30,7 +34,7 @@ public class LadderLine {
 
     private static Point initBody(int countOfPersons, List<Point> points, Point point) {
         // 이전에 생성된 포인트를 가지고 생성되기 때문에 이전 포인트의 index + 1이 생성된다.
-        for (int i = 0; i < countOfPersons - 1; i++) {
+        for (int i = 1; i < countOfPersons - 1; i++) {
             point = point.next();
             points.add(point);
         }

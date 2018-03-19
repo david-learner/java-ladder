@@ -29,7 +29,7 @@ public class Direction {
     }
 
     public Direction next(boolean nextRight) {
-        return of(this.right, this.left);
+        return of(this.right, nextRight);
     }
 
     public Direction next() {
