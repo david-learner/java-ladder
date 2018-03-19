@@ -1,12 +1,10 @@
 package view;
 
 import domain.LadderGame;
-import domain.LadderGameDTO;
 import domain.LadderLine;
 import domain.Player;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ResultView {
     private static final String dashLine = "-----";
@@ -43,6 +41,7 @@ public class ResultView {
         System.out.println();
         System.out.println("실행결과");
         Player[] players = dto.getPlayers();
+        // TODO 2depth warning
         for (Player player : players) {
             if (player.getName().equals(target)) {
                 System.out.println(player.getReward());

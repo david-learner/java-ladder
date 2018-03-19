@@ -2,16 +2,26 @@ package domain;
 
 public class Player {
     private String name;
-    private Coordinates point;
+    private Location location;
     private String reward;
 
-    public Player(String name, Coordinates point) {
-        this.point = point;
+//    public Player(String name) {
+//        Location location = new Location(0,0);
+//        this(name, location)
+//    }
+
+    public Player(String name, Location location) {
         this.name = name;
+        this.location = location;
     }
 
-    public Coordinates getPoint() {
-        return this.point;
+    public Player next(String name) {
+        Location location = new Location(0, this.location.getColumn() + 1);
+        return new Player(name, location);
+    }
+
+    public Location getLocation() {
+        return this.location;
     }
 
     public String getName() {
