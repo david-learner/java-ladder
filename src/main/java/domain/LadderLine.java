@@ -30,7 +30,6 @@ public class LadderLine {
     }
 
     private static Point initBody(int countOfPersons, List<Point> points, Point point) {
-        // 이전에 생성된 포인트를 가지고 생성되기 때문에 이전 포인트의 index + 1이 생성된다.
         for (int i = 1; i < countOfPersons - 1; i++) {
             point = point.next();
             points.add(point);

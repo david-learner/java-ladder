@@ -4,34 +4,51 @@ import java.util.Objects;
 
 public class Player {
     private String name;
-    private Location location;
+    //    private Location location;
+    private int index;
 
-    public Player(String name, Location location) {
+    public Player(String name, int index) {
         this.name = name;
-        this.location = location;
+        this.index = index;
     }
 
     public Player next(String name) {
-        Location location = new Location(0, this.location.getColumn() + 1);
-        return new Player(name, location);
+        return new Player(name, index + 1);
     }
 
-    public Location getLocation() {
-        return this.location;
+    public int getIndex() {
+        return this.index;
     }
 
     public String getName() {
         return this.name;
     }
 
+    public void move(int resultIndex) {
+        if (index < resultIndex) {
+            moveRight();
+        }
+        if (index > resultIndex) {
+            moveLeft();
+        }
+    }
+
+    public int moveRight() {
+        return ++index;
+    }
+
+    public int moveLeft() {
+        return --index;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        return this.name.equals(o);
+        Player pair = (Player)o;
+        return this.getName().equals(pair.getName());
     }
 
-    // hashCode는 여기서 어떤 역할을 하는가?
     @Override
     public int hashCode() {
         return Objects.hash(this.name);

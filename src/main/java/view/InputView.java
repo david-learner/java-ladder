@@ -1,5 +1,7 @@
 package view;
 
+import domain.LadderGame;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -12,13 +14,13 @@ public class InputView {
     }
 
     public static String[] getRewardsOfPersons() {
-        System.out.println("실행 결과를 입력하세요. (결과는 쉼표(,)로 구분하세요)");
+        System.out.println("\n실행 결과를 입력하세요. (결과는 쉼표(,)로 구분하세요)");
         String[] rewardsOfPersons = scanner.nextLine().split(",");
         return checkNames(rewardsOfPersons);
     }
 
     public static int getHeight() {
-        System.out.println("최대 사다리 높이는 몇 개 인가요?");
+        System.out.println("\n최대 사다리 높이는 몇 개 인가요?");
         return scanner.nextInt();
     }
 
@@ -27,13 +29,18 @@ public class InputView {
         return scanner.next();
     }
 
-    public static void iterateGetTarget() {
-        String target = "";
-        while (target != "all") {
-            target = getTarget();
-            ResultView.printTarget(target);
-        }
-        ResultView.printTarget(target);
+    public static void iterateGetTarget(LadderGame ladderGame) {
+        String name = "";
+//        while (!name.equals("all")) {
+//            name = getTarget();
+//            ResultView.printTarget(ladderGame.play(name));
+//        }
+        name = getTarget();
+        do {
+            ResultView.printTarget(ladderGame.play(name));
+            name = getTarget();
+        }while(!name.equals("all"));
+        ResultView.printTarget(ladderGame.play(name));
     }
 
     private static String[] checkNames(String[] namesOfPersons) {

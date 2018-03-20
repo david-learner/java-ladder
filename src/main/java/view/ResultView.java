@@ -30,38 +30,30 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void printTarget(String target) {
+    public static void printTarget(ArrayList<PlayerReward> playerRewards) {
         System.out.println("\n실행결과");
-        ArrayList<PlayerReward> playerRewards = PlayerReward.getPlayerRewards();
-        if (!target.equals("all")) {
-            printPerson(target, playerRewards);
-        }
-
-        if (target.equals("all")) {
-            printAll(playerRewards);
-        }
-    }
-
-    private static void printAll(ArrayList<PlayerReward> playerRewards) {
+        int playerRewardsSize = playerRewards.size();
         for (PlayerReward playerReward : playerRewards) {
-            System.out.println(playerReward.toString());
-        }
-        System.exit(0);
-    }
-
-    private static void printPerson(String target, ArrayList<PlayerReward> playerRewards) {
-        for (PlayerReward playerReward : playerRewards) {
-            printReward(playerReward, target);
+            printSingleOrAll(playerReward, playerRewardsSize);
         }
     }
 
-    private static void printReward(PlayerReward playerReward, String target) {
-        String name = playerReward.getPlayer().getName();
-        if (name.equals(target)) {
-            System.out.println(playerReward.getReward());
+    private static void printSingleOrAll(PlayerReward playerReward, int playerRewardsSize) {
+        if(playerRewardsSize > 1) {
+            printAll(playerReward);
+        }
+        if(playerRewardsSize < 2) {
+            printSingle(playerReward);
         }
     }
 
+    private static void printSingle(PlayerReward playerReward) {
+        System.out.println(playerReward.getReward());
+    }
+
+    private static void printAll(PlayerReward playerReward) {
+        System.out.println(playerReward.toString());
+    }
 
     private static void printNames() {
         for (Player player : players) {

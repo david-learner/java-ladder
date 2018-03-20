@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class LadderGame {
     private ArrayList<Player> players;
     private ArrayList<LadderLine> ladderLines;
+    private ArrayList<PlayerReward> playerRewards;
 
     public LadderGame(String[] names, int height) {
         this.players = makePlayers(names);
@@ -13,10 +14,8 @@ public class LadderGame {
 
     public ArrayList<Player> makePlayers(String[] names) {
         ArrayList<Player> players = new ArrayList<>();
-        Location location;
         for (int i = 0; i < names.length; i++) {
-            location = new Location(0, i);
-            players.add(new Player(names[i], location));
+            players.add(new Player(names[i], i));
         }
         return players;
     }
@@ -37,10 +36,26 @@ public class LadderGame {
         return players;
     }
 
-    public void setupReward() {
-        PlayerReward.init();
-        for (Player player : players) {
-            new PlayerReward(player);
+    public ArrayList<PlayerReward> play(String name) {
+        if (name.equals("all")) {
+            PlayerReward.init();
+            return PlayerReward.getPlayerReward(players);
         }
+        if (!name.equals("all")) {
+            PlayerReward.init();
+            Player player = getPlayer(name);
+            return PlayerReward.getPlayerReward(player);
+        }
+        return null;
+    }
+
+    public Player getPlayer(String name) {
+        Player result = new Player(name, 0);
+        for ( Player player : players) {
+            if(player.equals(result)) {
+                return player;
+            }
+        }
+        return  null;
     }
 }

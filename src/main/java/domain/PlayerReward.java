@@ -9,16 +9,26 @@ public class PlayerReward {
 
     public PlayerReward(Player player) {
         this.player = player;
-        Location location = player.getLocation();
-        this.reward = Reward.hasReward(location.getColumn());
-        playerRewards.add(this);
+        this.reward = Reward.hasReward(player.getIndex());
     }
 
     public static void init() {
         playerRewards = new ArrayList<>();
     }
 
-    public static ArrayList<PlayerReward> getPlayerRewards() {
+    public static ArrayList<PlayerReward> getPlayerReward(Player player) {
+        playerRewards.clear();
+        PlayerReward playerReward = new PlayerReward(player);
+        playerRewards.add(playerReward);
+        return playerRewards;
+    }
+
+    public static ArrayList<PlayerReward> getPlayerReward(ArrayList<Player> players) {
+        playerRewards.clear();
+        for (Player player : players) {
+            PlayerReward playerReward = new PlayerReward(player);
+            playerRewards.add(playerReward);
+        }
         return playerRewards;
     }
 

@@ -9,16 +9,16 @@ public class LadderMatch {
 
         for (int i = 0; i < players.size(); i++) {
             Player player = players.get(i);
-            navigatePath(player, ladderLines);
+            int currentIndex = player.getIndex();
+            navigatePath(player, ladderLines, currentIndex);
         }
     }
 
-    private void navigatePath(Player player, ArrayList<LadderLine> ladderLines) {
-        Location location = player.getLocation();
+    private void navigatePath(Player player, ArrayList<LadderLine> ladderLines, int currentIndex) {
+        int resultIndex = currentIndex;
         for (LadderLine ladderLine : ladderLines) {
-            int index = ladderLine.move(location.getColumn());
-            location.move(index);
-            location.nextRow(ladderLines.size());
+            resultIndex = ladderLine.move(resultIndex);
+            player.move(resultIndex);
         }
     }
 }
