@@ -20,7 +20,7 @@ public class ResultView {
         for (int i = 0; i < ladderLines.size(); i++) {
             printLine(ladderLines.get(i));
         }
-        printRewards(Reward.getRewards());
+        printRewards(ladderGame.getRewards());
     }
 
     private static void printRewards(ArrayList<String> rewards) {
