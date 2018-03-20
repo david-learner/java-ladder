@@ -1,6 +1,5 @@
 package domain;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +12,11 @@ public class LadderLine {
         this.points = points;
     }
 
-    // 생성자내에 초기화 로직을 쓰면 의미전달이 명확하지 않게 된다.
-    // static init()메서드로 초기화와 동시에 객체 생성.
     public static LadderLine init(int countOfPersons) {
         List<Point> points = new ArrayList<>();
-        Point point = initFirst(points); // 첫 포인트는 왼쪽이 막힘
-        point = initBody(countOfPersons, points, point); // 양쪽 모두 열린 포인트들 생성
-        initLast(points, point); // 끝 포인트는 오른쪽이 막힘
+        Point point = initFirst(points);
+        point = initBody(countOfPersons, points, point);
+        initLast(points, point);
         return new LadderLine(points);
     }
 

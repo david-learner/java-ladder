@@ -1,7 +1,6 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class PlayerReward {
     public static ArrayList<PlayerReward> playerRewards;
@@ -18,10 +17,6 @@ public class PlayerReward {
     public static void init() {
         playerRewards = new ArrayList<>();
     }
-
-//    public static void addPlayerReward(Player player) {
-//        playerRewards.add(new PlayerReward(player));
-//    }
 
     public static ArrayList<PlayerReward> getPlayerRewards() {
         return playerRewards;

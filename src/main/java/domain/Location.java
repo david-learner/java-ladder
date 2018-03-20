@@ -12,6 +12,9 @@ public class Location {
     public int getColumn() {
         return this.column;
     }
+    public int getRow() {
+        return this.row;
+    }
 
     public void move(int index) {
         if(index > this.column) {

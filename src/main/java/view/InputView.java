@@ -18,12 +18,12 @@ public class InputView {
     }
 
     public static int getHeight() {
-        System.out.println("최대 사다리 높이는 몇 개 인가요?" + '\n');
+        System.out.println("최대 사다리 높이는 몇 개 인가요?");
         return scanner.nextInt();
     }
 
     private static String getTarget() {
-        System.out.println('\n' + "결과를 보고 싶은 사람은?");
+        System.out.println("\n결과를 보고 싶은 사람은?");
         return scanner.next();
     }
 

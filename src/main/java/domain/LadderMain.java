@@ -1,6 +1,5 @@
 package domain;
 
-import jdk.internal.util.xml.impl.Input;
 import view.InputView;
 import view.ResultView;
 

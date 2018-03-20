@@ -15,6 +15,7 @@ public class ResultView {
         ArrayList<LadderLine> ladderLines = ladderGame.getLadderLines();
         players = ladderGame.getPlayers();
 
+        System.out.println("\n사다리 결과\n");
         printNames();
         for (int i = 0; i < ladderLines.size(); i++) {
             printLine(ladderLines.get(i));
@@ -26,10 +27,11 @@ public class ResultView {
         for (String reward : rewards) {
             System.out.print(String.format("%-5s", reward));
         }
+        System.out.println();
     }
 
     public static void printTarget(String target) {
-        System.out.println('\n' + "실행결과");
+        System.out.println("\n실행결과");
         ArrayList<PlayerReward> playerRewards = PlayerReward.getPlayerRewards();
         if (!target.equals("all")) {
             printPerson(target, playerRewards);
@@ -58,7 +60,6 @@ public class ResultView {
         if (name.equals(target)) {
             System.out.println(playerReward.getReward());
         }
-        System.out.println();
     }
 
 
