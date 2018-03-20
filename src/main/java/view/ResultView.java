@@ -9,12 +9,13 @@ public class ResultView {
     private static final String dashLine = "-----";
     private static final String spaceLine = "     ";
     private static final String pipe = "|";
+    private static ArrayList<Player> players;
 
     public static void printResult(LadderGame ladderGame) {
         ArrayList<LadderLine> ladderLines = ladderGame.getLadderLines();
-        ArrayList<Player> players = ladderGame.getPlayers();
+        players = ladderGame.getPlayers();
 
-        printNames(players);
+        printNames();
         for (int i = 0; i < ladderLines.size(); i++) {
             printLine(ladderLines.get(i));
         }
@@ -22,14 +23,47 @@ public class ResultView {
     }
 
     private static void printRewards(ArrayList<String> rewards) {
-        for (String reward: rewards) {
+        for (String reward : rewards) {
             System.out.print(String.format("%-5s", reward));
         }
     }
 
+    public static void printTarget(String target) {
+        System.out.println('\n' + "실행결과");
+        ArrayList<PlayerReward> playerRewards = PlayerReward.getPlayerRewards();
+        if (!target.equals("all")) {
+            printPerson(target, playerRewards);
+        }
 
-    private static void printNames(ArrayList<Player> players) {
-        for (Player player:players) {
+        if (target.equals("all")) {
+            printAll(playerRewards);
+        }
+    }
+
+    private static void printAll(ArrayList<PlayerReward> playerRewards) {
+        for (PlayerReward playerReward : playerRewards) {
+            System.out.println(playerReward.toString());
+        }
+        System.exit(0);
+    }
+
+    private static void printPerson(String target, ArrayList<PlayerReward> playerRewards) {
+        for (PlayerReward playerReward : playerRewards) {
+            printReward(playerReward, target);
+        }
+    }
+
+    private static void printReward(PlayerReward playerReward, String target) {
+        String name = playerReward.getPlayer().getName();
+        if (name.equals(target)) {
+            System.out.println(playerReward.getReward());
+        }
+        System.out.println();
+    }
+
+
+    private static void printNames() {
+        for (Player player : players) {
             System.out.print(String.format("%-6s", player.getName()));
         }
         System.out.println();
@@ -46,8 +80,8 @@ public class ResultView {
     }
 
     private static void classify(Point point, int index) {
-            System.out.print(printPipe());
-            System.out.print(printBridge(point));
+        System.out.print(printPipe());
+        System.out.print(printBridge(point));
     }
 
     private static String printPipe() {
@@ -61,87 +95,4 @@ public class ResultView {
         }
         return spaceLine;
     }
-
-
-//    public static void printResult(LadderGame ladderGame, LadderGameDTO dto) {
-//        LadderLine[] ladderLine = ladderGame.getLadderLine();
-//
-//        System.out.println("사다리 결과");
-//        printNames(ladderGame);
-//        for (LadderLine line : ladderLine) {
-//            printLine(line);
-//        }
-//        printRewards(dto);
-//    }
-//
-//    private static void printRewards(LadderGameDTO dto) {
-//        String[] rewards = dto.getRewards();
-//        for (String reward : rewards) {
-//            System.out.print(String.format("%-5s", reward));
-//        }
-//        System.out.println("\n");
-//    }
-//
-//    public static void printAllRewards(LadderGameDTO dto) {
-//        Player[] players = dto.getPlayers();
-//        for (Player player : players) {
-//            System.out.println(player.getName() + " : " + player.getReward());
-//        }
-//    }
-//
-//    public static void printTarget(String target, LadderGameDTO dto) {
-//        System.out.println();
-//        System.out.println("실행결과");
-//        Player[] players = dto.getPlayers();
-//        // TODO 2depth warning
-//        for (Player player : players) {
-//            if (player.getName().equals(target)) {
-//                System.out.println(player.getReward());
-//            }
-//        }
-//        System.out.println();
-//    }
-//
-//    static void printNames(LadderGame ladderGame) {
-//        Player[] players = ladderGame.getPlayers();
-//
-//        for (int i = 0; i < players.length; i++) {
-//            String name = players[i].getName();
-//            System.out.print(String.format("%-6s", name));
-//        }
-//        System.out.println();
-//    }
-//
-//    static void printLine(LadderLine line) {
-//        ArrayList<Boolean> points;
-//        points = line.getLine();
-//        int width = points.size() + (points.size() + 1);
-//
-//        for (int i = 0; i < width; i++) {
-//            printElements(points, i);
-//        }
-//        System.out.println();
-//    }
-//
-//    private static void printElements(ArrayList<Boolean> points, int i) {
-//        if (i % 2 == 1) {
-//            int portion = i / 2;
-//            printBridge(points.get(portion));
-//        }
-//        if (i % 2 == 0) {
-//            printPipe();
-//        }
-//    }
-//
-//    private static void printPipe() {
-//        System.out.print(pipe);
-//    }
-//
-//    private static void printBridge(Boolean bridge) {
-//        if (bridge) {
-//            System.out.print(dashLine);
-//            return;
-//        }
-//        System.out.print(spaceLine);
-//    }
 }

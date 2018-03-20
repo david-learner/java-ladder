@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PlayerReward {
     public static ArrayList<PlayerReward> playerRewards;
@@ -11,19 +12,31 @@ public class PlayerReward {
         this.player = player;
         Location location = player.getLocation();
         this.reward = Reward.hasReward(location.getColumn());
-        System.out.println(this.toString());
+        playerRewards.add(this);
     }
 
-    public static void addPlayerReward(Player player) {
-        playerRewards.add(new PlayerReward(player));
+    public static void init() {
+        playerRewards = new ArrayList<>();
     }
+
+//    public static void addPlayerReward(Player player) {
+//        playerRewards.add(new PlayerReward(player));
+//    }
 
     public static ArrayList<PlayerReward> getPlayerRewards() {
         return playerRewards;
     }
 
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public String getReward() {
+        return this.reward;
+    }
+
     @Override
     public String toString() {
-        return "Player : " + this.player.getName() + " Reward : " + this.reward;
+        return this.player.getName() + " : " + this.reward;
     }
 }

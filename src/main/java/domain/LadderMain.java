@@ -1,5 +1,6 @@
 package domain;
 
+import jdk.internal.util.xml.impl.Input;
 import view.InputView;
 import view.ResultView;
 
@@ -12,5 +13,6 @@ public class LadderMain {
        LadderMatch ladderMatch = new LadderMatch(ladderGame);
        ladderGame.setupReward();
        ResultView.printResult(ladderGame);
+       InputView.iterateGetTarget();
     }
 }

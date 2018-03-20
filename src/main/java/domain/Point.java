@@ -14,8 +14,8 @@ public class Point {
     }
 
     public int move() {
-        System.out.println("is left? " + direction.isLeft());
-        System.out.println("is Right? " + direction.isRight());
+//        System.out.println("is left? " + direction.isLeft());
+//        System.out.println("is Right? " + direction.isRight());
 
         if (direction.isRight()) {
             return index + 1;

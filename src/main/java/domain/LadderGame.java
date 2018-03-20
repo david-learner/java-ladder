@@ -38,6 +38,7 @@ public class LadderGame {
     }
 
     public void setupReward() {
+        PlayerReward.init();
         for (Player player : players) {
             new PlayerReward(player);
         }

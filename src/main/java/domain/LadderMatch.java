@@ -10,7 +10,7 @@ public class LadderMatch {
         for (int i = 0; i < players.size(); i++) {
             Player player = players.get(i);
             navigatePath(player, ladderLines);
-            System.out.println(player.getLocation().toString());
+//            System.out.println(player.getLocation().toString());
         }
     }
 

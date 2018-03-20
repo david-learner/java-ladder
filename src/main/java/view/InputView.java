@@ -18,13 +18,22 @@ public class InputView {
     }
 
     public static int getHeight() {
-        System.out.println("최대 사다리 높이는 몇 개 인가요?");
+        System.out.println("최대 사다리 높이는 몇 개 인가요?" + '\n');
         return scanner.nextInt();
     }
 
-    public static String getTarget() {
-        System.out.println("결과를 보고 싶은 사람은?");
+    private static String getTarget() {
+        System.out.println('\n' + "결과를 보고 싶은 사람은?");
         return scanner.next();
+    }
+
+    public static void iterateGetTarget() {
+        String target = "";
+        while (target != "all") {
+            target = getTarget();
+            ResultView.printTarget(target);
+        }
+        ResultView.printTarget(target);
     }
 
     private static String[] checkNames(String[] namesOfPersons) {

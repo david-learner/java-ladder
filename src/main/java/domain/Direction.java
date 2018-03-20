@@ -17,7 +17,7 @@ public class Direction {
 
         this.left = left;
         this.right = right;
-        System.out.println(this);
+//        System.out.println(this);
     }
 
     public boolean isRight() {
@@ -39,7 +39,7 @@ public class Direction {
         return next(generatePoint());
     }
 
-    // of의 역할은 무엇인가?
+    //  of는 getInstance를 대체.
     public static Direction of(boolean first, boolean second) {
         return new Direction(first, second);
     }
@@ -57,6 +57,7 @@ public class Direction {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        // direction만 같으면 같은 객체라고 판단
         Direction pair = (Direction) o;
         return left == pair.left && right == pair.right;
     }
