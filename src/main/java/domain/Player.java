@@ -6,13 +6,9 @@ public class Player {
     private String name;
     private int index;
 
-    public Player(String name, int index) {
+    Player(String name, int index) {
         this.name = name;
         this.index = index;
-    }
-
-    public Player next(String name) {
-        return new Player(name, index + 1);
     }
 
     public int getIndex() {
@@ -32,11 +28,11 @@ public class Player {
         }
     }
 
-    public int moveRight() {
+    private int moveRight() {
         return ++index;
     }
 
-    public int moveLeft() {
+    private int moveLeft() {
         return --index;
     }
 

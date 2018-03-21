@@ -5,12 +5,12 @@ import java.util.Arrays;
 
 public class LadderGame {
     private ArrayList<Player> players;
-    private ArrayList<PlayerReward> playerRewards;
     private ArrayList<String> rewards;
+    private ArrayList<PlayerReward> playerRewards; // for all
 
-    public LadderGame(String[] names, String[] rewards, int height) {
-        this.players = makePlayers(names);
+    LadderGame(String[] names, String[] rewards, int height) {
         Ladder.makeLadderLines(names, height);
+        this.players = makePlayers(names);
         this.rewards = new ArrayList<>(Arrays.asList(rewards));
     }
 
@@ -30,8 +30,6 @@ public class LadderGame {
         return rewards;
     }
 
-    // 이동이 끝난 플레이어의 인덱스 가지고 플레이어 리워드 ArrayList 생성
-    // 목적 : all 요청시, 해당 ArrayList 리턴해주면 됨.
     public ArrayList<PlayerReward> getPlayerRewards() {
         playerRewards = new ArrayList<>();
         for (Player player : players) {
@@ -42,7 +40,6 @@ public class LadderGame {
         return this.playerRewards;
     }
 
-    // TODO 들어온 이름으로 PlayerReward를 생성해주기.
     public ArrayList<PlayerReward> play(String name) {
         if (name.equals("all")) {
             return this.playerRewards;
@@ -50,7 +47,7 @@ public class LadderGame {
         if (!name.equals("all")) {
             Player player = getMatchedPlayer(name);
             PlayerReward playerReward = new PlayerReward(player, rewards.get(player.getIndex()));
-            ArrayList<PlayerReward> playerRewards = new ArrayList<>(); // this.playerRewards에 덮어쓰지 않으려고.
+            ArrayList<PlayerReward> playerRewards = new ArrayList<>(); // for single
             playerRewards.add(playerReward);
             return playerRewards;
         }
@@ -58,7 +55,7 @@ public class LadderGame {
     }
 
     // TODO 더 나은 방법이 없는지 고민하기
-    public Player getMatchedPlayer(String name) {
+    private Player getMatchedPlayer(String name) {
         Player result = new Player(name, 0);
         for (Player player : players) {
             if (player.equals(result)) {

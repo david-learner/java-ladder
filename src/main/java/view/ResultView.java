@@ -67,14 +67,10 @@ public class ResultView {
         Point point;
         for (int i = 0; i < points.size(); i++) {
             point = points.get(i);
-            classify(point, i);
+            System.out.print(printPipe());
+            System.out.print(printBridge(point));
         }
         System.out.println();
-    }
-
-    private static void classify(Point point, int index) {
-        System.out.print(printPipe());
-        System.out.print(printBridge(point));
     }
 
     private static String printPipe() {
@@ -86,6 +82,9 @@ public class ResultView {
         if (direction.isRight()) {
             return dashLine;
         }
-        return spaceLine;
+        if (!direction.isRight()) {
+            return spaceLine;
+        }
+        return ""; // 마지막 칸.
     }
 }

@@ -11,12 +11,13 @@ import static org.junit.Assert.assertThat;
 public class LadderGameTest {
     LadderGame ladderGame;
     String[] newNames = {"kbs", "sbs", "mbc"};
+    String[] rewards = {"o", "x", "x"};
     final int HEIGHT = 5;
 
     @Before
     public void setup() {
         String[] oldNames = {"kbs", "sbs"};
-        ladderGame = new LadderGame(oldNames, HEIGHT);
+        ladderGame = new LadderGame(oldNames, rewards, HEIGHT);
     }
 
     @Test
@@ -27,7 +28,8 @@ public class LadderGameTest {
 
     @Test
     public void countOfLadderLines() {
-        ArrayList<LadderLine> ladderLines = ladderGame.makeLadderLines(newNames, HEIGHT);
+        ArrayList<LadderLine> ladderLines = Ladder.makeLadderLines(newNames, HEIGHT);
+        System.out.println(ladderLines);
         assertThat(ladderLines.size(), is(5));
     }
 }

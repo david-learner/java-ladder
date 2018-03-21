@@ -2,8 +2,8 @@ package domain;
 
 import java.util.ArrayList;
 
-public class LadderMatch {
-    public LadderMatch(LadderGame ladderGame) {
+class LadderMatch {
+    LadderMatch(LadderGame ladderGame) {
         ArrayList<Player> players = ladderGame.getPlayers();
         ArrayList<LadderLine> ladderLines = Ladder.getLadderLines();
 

@@ -30,12 +30,7 @@ public class InputView {
     }
 
     public static void iterateGetTarget(LadderGame ladderGame) {
-        String name = "";
-//        while (!name.equals("all")) {
-//            name = getTarget();
-//            ResultView.printTarget(ladderGame.play(name));
-//        }
-        name = getTarget();
+        String name = getTarget();
         do {
             ResultView.printTarget(ladderGame.play(name));
             name = getTarget();
