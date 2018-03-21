@@ -2,16 +2,17 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class LadderGame {
     private ArrayList<Player> players;
-    private ArrayList<String> rewards;
+    private List<String> rewards;
     private ArrayList<PlayerReward> playerRewards; // for all
 
     LadderGame(String[] names, String[] rewards, int height) {
         Ladder.makeLadderLines(names, height);
         this.players = makePlayers(names);
-        this.rewards = new ArrayList<>(Arrays.asList(rewards));
+        this.rewards = Arrays.asList(rewards);
     }
 
     public ArrayList<Player> makePlayers(String[] names) {
@@ -26,7 +27,7 @@ public class LadderGame {
         return players;
     }
 
-    public ArrayList<String> getRewards() {
+    public List<String> getRewards() {
         return rewards;
     }
 
@@ -44,14 +45,11 @@ public class LadderGame {
         if (name.equals("all")) {
             return this.playerRewards;
         }
-        if (!name.equals("all")) {
-            Player player = getMatchedPlayer(name);
-            PlayerReward playerReward = new PlayerReward(player, rewards.get(player.getIndex()));
-            ArrayList<PlayerReward> playerRewards = new ArrayList<>(); // for single
-            playerRewards.add(playerReward);
-            return playerRewards;
-        }
-        return null;
+        Player player = getMatchedPlayer(name);
+        PlayerReward playerReward = new PlayerReward(player, rewards.get(player.getIndex()));
+        ArrayList<PlayerReward> playerRewards = new ArrayList<>(); // for single
+        playerRewards.add(playerReward);
+        return playerRewards;
     }
 
     // TODO 더 나은 방법이 없는지 고민하기
