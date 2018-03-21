@@ -12,7 +12,7 @@ public class ResultView {
     private static ArrayList<Player> players;
 
     public static void printResult(LadderGame ladderGame) {
-        ArrayList<LadderLine> ladderLines = ladderGame.getLadderLines();
+        ArrayList<LadderLine> ladderLines = Ladder.getLadderLines();
         players = ladderGame.getPlayers();
 
         System.out.println("\n사다리 결과\n");

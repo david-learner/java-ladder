@@ -5,13 +5,12 @@ import java.util.Arrays;
 
 public class LadderGame {
     private ArrayList<Player> players;
-    private ArrayList<LadderLine> ladderLines;
     private ArrayList<PlayerReward> playerRewards;
     private ArrayList<String> rewards;
 
     public LadderGame(String[] names, String[] rewards, int height) {
         this.players = makePlayers(names);
-        this.ladderLines = makeLadderLines(names, height);
+        Ladder.makeLadderLines(names, height);
         this.rewards = new ArrayList<>(Arrays.asList(rewards));
     }
 
@@ -21,18 +20,6 @@ public class LadderGame {
             players.add(new Player(names[i], i));
         }
         return players;
-    }
-
-    public ArrayList<LadderLine> makeLadderLines(String[] names, int height) {
-        ArrayList<LadderLine> ladderLines = new ArrayList<>();
-        for (int i = 0; i < height; i++) {
-            ladderLines.add(LadderLine.init(names.length));
-        }
-        return ladderLines;
-    }
-
-    public ArrayList<LadderLine> getLadderLines() {
-        return this.ladderLines;
     }
 
     public ArrayList<Player> getPlayers() {

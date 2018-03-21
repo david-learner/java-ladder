@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Player {
     private String name;
-    //    private Location location;
     private int index;
 
     public Player(String name, int index) {

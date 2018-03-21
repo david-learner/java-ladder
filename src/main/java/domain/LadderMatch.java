@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class LadderMatch {
     public LadderMatch(LadderGame ladderGame) {
         ArrayList<Player> players = ladderGame.getPlayers();
-        ArrayList<LadderLine> ladderLines = ladderGame.getLadderLines();
+        ArrayList<LadderLine> ladderLines = Ladder.getLadderLines();
 
         for (int i = 0; i < players.size(); i++) {
             Player player = players.get(i);
